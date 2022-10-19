@@ -1,0 +1,55 @@
+.header {
+    text-align: center;
+  }
+
+
+  .outer{
+
+    display: flex;
+  }
+  
+  .left{
+    background-color: aqua;
+    
+  }
+
+  
+    input {border:0;outline:0;}
+input:focus {outline:none!important;}
+  
+
+  
+
+  .right{
+    background-color: red;
+    height:100%;
+    width:100%;
+    overflow:hidden; 
+    
+  }
+  .giga{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin-top: 10px;
+    margin-top: 10px;
+    justify-content: center
+    
+  }
+
+  .up{
+    background-color: blue;
+    height: 20pc;
+    content: centre;
+  }
+
+  .sidecontent{
+size: 100px;
+
+  }
+
+
+  .down{
+    background-color: yellow;
+    height:30pc;
+  }
