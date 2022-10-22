@@ -14,7 +14,7 @@ import router from './routes/users.js';
 // const bodyParser = require('body-parser')
 
 const app = express()
-const port = 3001
+const port = 5000
 
 app.use(bodyParser.json())
 // Adding a Router
@@ -24,14 +24,20 @@ app.get('/', (req, res) => {
     res.send('Hello Universe!')
 })
 
-app.get('/todos', (req, res) => {
-    res.send('A list of todo items will be returned')
+
+app.get('/api', (req, res) => {
+    res.json({"users":["abdullah", "saad"]})
 })
 
-app.post('/', (req, res) => {
-    console.log(req.body)
-    res.send('Posting a Request')
-})
+// app.get('/todos', (req, res) => {
+//     res.send('A list of todo items will be returned')
+    
+// })
+
+// app.post('/', (req, res) => {
+//     console.log(req.body)
+//     res.send('Posting a Request')
+// })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

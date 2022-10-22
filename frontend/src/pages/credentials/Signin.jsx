@@ -6,12 +6,11 @@ import "./signup.css";
 import { useNavigate } from "react-router-dom";
 let permission=false;
 
-
-function Signuprequest(name1,email1,Birthday1,Phonenumber1, password1) {
+function loginrquest(email1, password1) {
  
-  const data = { name: name1,email: email1, birthday: Birthday1,Phonenumber:Phonenumber1, password: password1 };
+  const data = { email: email1, password: password1 };
 
-  fetch('/users/signup', {
+  fetch('/users/signin', {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -32,33 +31,27 @@ function Signuprequest(name1,email1,Birthday1,Phonenumber1, password1) {
 };
 
 
-
-
-const Signup = () => {
+const Signin = () => {
   const navigate = useNavigate();
+
+  
+
+
+   
+
+
+
+
   const [values, setValues] = useState({
-    name: "",
+    
     email: "",
-    birthday: "",
     password: "",
-    Phonenumber:"",
-    confirmPassword: "",
   });
 
   const inputs = [
+   
     {
       id: 1,
-      name: "name",
-      type: "text",
-      placeholder: "name",
-      errorMessage:
-        "Username should be 3-16 characters and shouldn't include any special character!",
-      label: "Name",
-      pattern: "^[A-Za-z0-9]{3,16}$",
-      required: true,
-    },
-    {
-      id: 2,
       name: "email",
       type: "email",
       placeholder: "Email",
@@ -66,26 +59,9 @@ const Signup = () => {
       label: "Email",
       required: true,
     },
+    
     {
-      id: 3,
-      name: "birthday",
-      type: "date",
-      placeholder: "birthday",
-      label: "Birthday",
-    },
-    {
-      id: 4,
-      name: "Phonenumber",
-      type: "number",
-      placeholder: "phone number",
-      label: "Phonenumber",
-      pattern :"[0-9]{3}-[0-9]{2}-[0-9]{3}",
-      errorMessage:
-        "Incorret phonenumber",
-      required:true,
-    },
-    {
-      id: 5,
+      id: 2,
       name: "password",
       type: "password",
       placeholder: "Password",
@@ -95,26 +71,19 @@ const Signup = () => {
       pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
       required: true,
     },
-    {
-      id: 6,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirm Password",
-      errorMessage: "Passwords don't match!",
-      label: "Confirm Password",
-      pattern: values.password,
-      required: true,
-    },
+    
   ];
 
   const handleSubmit = (e) => {
+  
     e.preventDefault();
-    Signuprequest(values.name,values.email,values.birthday,values.Phonenumber, values.password);
     
-    // if(permission){
-    //   navigate("/signin");}
-
-
+    loginrquest(values.email,values.password);
+    
+      if(permission){
+        navigate("/profile");}
+    
+   
   };
 
   const onChange = (e) => {
@@ -125,8 +94,8 @@ const Signup = () => {
     <div>
     <Navbar/>
     <div className="signup">
-      <form className="form1" onSubmit={handleSubmit}>
-        <h1 className="h1alpha">Register</h1>
+      <form className="form2" onSubmit={handleSubmit}>
+        <h1 className="h1alpha">Sign In</h1>
         {inputs.map((input) => (
           <FormInput
             key={input.id}
@@ -135,11 +104,11 @@ const Signup = () => {
             onChange={onChange}
           />
         ))}
-        <button className="buttonsign">Submit</button>
+        <button className="buttonsign"  >Submit</button>
       </form>
     </div>
     </div>
   );
 };
 
-export default Signup;
+export default Signin;
