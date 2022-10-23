@@ -4,29 +4,15 @@ import FormInput from "../../components/textbox/FormInput";
 import Navbar from "../../components/navbar/Navbar";
 import "./signup.css";
 import { useNavigate } from "react-router-dom";
+import ExampleToast from "../../components/toast"
+
+
+
 let permission=false;
 
 function loginrquest(email1, password1) {
  
-  const data = { email: email1, password: password1 };
-
-  fetch('/users/signin', {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
-     if(data.value =='1')
-     permission=true;
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+ 
   
 };
 
@@ -78,11 +64,40 @@ const Signin = () => {
   
     e.preventDefault();
     
-    loginrquest(values.email,values.password);
-    
-      if(permission){
-        navigate("/profile");}
-    
+   
+
+         const data = { email: values.email, password: values.password };
+
+         fetch('/users/signin', {
+           method: 'POST', // or 'PUT'
+           headers: {
+             'Content-Type': 'application/json',
+             'Accept': 'application/json'
+           },
+           body: JSON.stringify(data),
+         })
+           .then((response) => response.json())
+           .then((data) => {
+             console.log('Success:', data);
+//             if(data.value === '1'){
+//           //  navigate("/profile", { email: values.email });}
+//             else{
+
+// <ExampleToast>
+//         Wrong credentials
+//       </ExampleToast>
+
+//             }
+           })
+           .catch((error) => {
+             console.error('Error:', error);
+           });
+
+
+
+
+
+
    
   };
 

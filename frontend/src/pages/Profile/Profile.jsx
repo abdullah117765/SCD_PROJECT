@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from 'react';
 
-import Button from 'react-bootstrap/Button';
+
 import Card from 'react-bootstrap/Card';
 import logo from "./images.jpg";
 
@@ -23,7 +23,45 @@ import "./profile.css"
 
 
 
+      function Getprofile() {
+       
+        const data = { email: "axiomshah@gmial.com" };
+
+  fetch('/users/profile', {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log( data);
+    
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+      };
+
+
+
+
+
 export default function Profile() {
+  
+  // { route, navigation }
+  //const { emailparam } = route.params;
+
+Getprofile();
+  
+
+
+
+
+
 
   
  
@@ -114,7 +152,7 @@ export default function Profile() {
 <div className="up">
 <div className='sidecontent'>
   
-    <h1> this is just good what else can i say </h1>
+    <h1> this is will be changed  </h1>
  
 </div>
 </div>
