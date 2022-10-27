@@ -1,11 +1,9 @@
 import { useEffect,useState } from "react";
-
+import React from 'react';
 import FormInput from "../../components/textbox/FormInput";
 import Navbar from "../../components/navbar/Navbar";
 import "./signup.css";
 import { useNavigate } from "react-router-dom";
-import ExampleToast from "../../components/toast"
-
 
 
 let permission=false;
@@ -64,7 +62,7 @@ const Signin = () => {
   
     e.preventDefault();
     
-   
+  
 
          const data = { email: values.email, password: values.password };
 
@@ -79,8 +77,12 @@ const Signin = () => {
            .then((response) => response.json())
            .then((data) => {
              console.log('Success:', data);
-//             if(data.value === '1'){
-//           //  navigate("/profile", { email: values.email });}
+            if(data.value === '1'){
+     
+            
+
+                  navigate('/profile/${email: values.email}');
+}
 //             else{
 
 // <ExampleToast>

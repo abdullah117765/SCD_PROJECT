@@ -13,13 +13,8 @@ import mongoose from 'mongoose';
     
     const UserSchema = new  mongoose.Schema({
         Name: String,
-        // rating : {
-        //     type: Number,
-        //     min: [0, 'Too few eggs'],   // these are validation of mongoose
-        //     max: 10
-        //   },
         Email: String,
-        Birthday: Date, 
+        Birthday: String, 
         Number: String,
         Password: String,
       });
@@ -34,8 +29,8 @@ router.post('/profile',function(req,res){
   
     const User =mongoose.model("User", UserSchema);  // User collection
     
-    User.find({ Email:"axiomshah@gmail.com"},function(err,use){
-    
+    User.find({ Email:req.body.email},function(err,use){
+    console.log("oke = " + req.body.email);
          // this use here is an array that is returned from db
          if(err){
             console.log(err);
@@ -69,7 +64,7 @@ router.post('/signin',authorizeUserspresence,function(req,res){
         var Birthday = req.body.birthday;
         var phonenumber = req.body.Phonenumber;
         var password = req.body.password;
-        console.log("Email = "+email+", password is "+password, "birthday"+ Birthday, "Phonenumber"+phonenumber,"Name"+name);
+        console.log("Email = "+email+", password is "+password, "birthday"+ Birthday, "Phonenumber"+phonenumber,"Name"+name1);
         res.send({"value": "1"});
         SaveUser(name1,email,Birthday,phonenumber,password);
         });
@@ -105,6 +100,43 @@ router.post('/signin',authorizeUserspresence,function(req,res){
           }
 
 
+
+          router.post('/updateuser',function(req,res){
+           
+            const User =mongoose.model("User", UserSchema);  // User collection
+            //
+
+            console.log(req.body.Birthday);
+            console.log(req.body.email);
+            User.findOneAndUpdate({ email:req.body.email }, { "$set": { "Birthday":req.body.Birthday,"Password":req.body.password , Name: req.body.name, Number: req.body.Phonenumber }}).exec(function(err, book){
+                if(err) {
+                    console.log(err);
+                    res.send({"value": "-1"})
+                } else {
+                    res.send({"value":"1"});
+                    console.log("Successfully updated the document.");
+                }
+             });
+
+
+
+//Birthday:req.body.birthday,
+// console.log(req.body.name);
+//             User.updateOne({Email:req.body.email} , { "$set": {Email:req.body.email,Birthday:req.body.birthday,Password:req.body.password, Phonenumber: req.body.Phonenumber, name: req.body.name},function(err){
+//                 console.log(req.body.name);
+//                 if(err){
+//                     console.log(err);
+//                     res.send({"value": "-1"})
+//                 }else{
+//                     res.send({"value":"1"});
+//                 console.log("Successfully updated the document.");
+//                 }
+//             });
+
+
+
+            
+          });
 
         
 

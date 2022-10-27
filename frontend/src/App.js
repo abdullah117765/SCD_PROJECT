@@ -3,11 +3,12 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-
+import React, { useState } from 'react';
 import Home from "./pages/home/Home";
  import Signup from "./pages/credentials/Signup.jsx";
  import Signin from "./pages/credentials/Signin.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
+import Feedbackfunc from "./pages/feedback";
 function App() {
   return (
     <BrowserRouter>
@@ -17,7 +18,8 @@ function App() {
         {/* <Route path="/hotels/:id" element={<Hotel/>}/> */} */}
        <Route path="/register" element={<Signup/>}/>
        <Route path="/signin" element={<Signin/>}/>
-       <Route path="/profile" element={<Profile/>}/>
+       <Route path="/profile/:id" element={<Profile />}    />
+       <Route path="/feed" element={<Feedbackfunc/>}/>
       </Routes>
     </BrowserRouter>
   );

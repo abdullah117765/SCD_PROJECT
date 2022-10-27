@@ -7,9 +7,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
  

@@ -1,27 +1,43 @@
+import  React, { useState } from "react";
+import "./toast.css";
 
+function Toast() {
+  const [visibility, setVisibility] = useState("block");
+  const [BtnVisibile, setBtnVisibile] = useState("none");
 
+  function clickHandler(type) {
+    if (type === "hide") {
+      setVisibility("none");
+      setBtnVisibile("block");
+    } else {
+      setVisibility("block");
+      setBtnVisibile("none");
+    }
+  }
 
-import React, { useState } from 'react';
-import Toast from 'react-bootstrap/Toast';
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
+  return (
+    <div className="container">
+      <div className="Toast" style={{ display: visibility }}>
+        <span>Message sent successfully!!</span>
+        <button className="btn-hide" onClick={() => clickHandler("hide")}>
+          X
+        </button>
+      </div>
+      <button
+        style={{ display: BtnVisibile }}
+        className="btn-show"
+        onClick={() => clickHandler("show")}
+      >
+        Show
+      </button>
+    </div>
+  );
+}
 
-
-
-const ExampleToast = ({ children }) => {
-    const [show, toggleShow] = useState(true);
-  
-    return (
-      <>
-        {!show && <Button onClick={() => toggleShow(true)}>Show Toast</Button>}
-        <Toast show={show} onClose={() => toggleShow(false)}>
-          <Toast.Header>
-            <strong className="mr-auto">React-Bootstrap</strong>
-          </Toast.Header>
-          <Toast.Body>{children}</Toast.Body>
-        </Toast>
-      </>
-    );
-  };
-
-  export default ExampleToast;
+export default function Toast2() {
+  return (
+    <div className="App">
+      <Toast />
+    </div>
+  );
+}

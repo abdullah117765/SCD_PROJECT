@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react";
-
+import React from 'react';
 import FormInput from "../../components/textbox/FormInput";
 import Navbar from "../../components/navbar/Navbar";
 import "./signup.css";
@@ -70,6 +70,7 @@ const Signup = () => {
       id: 3,
       name: "birthday",
       type: "date",
+      formatdate:"mm-dd-yyyy",
       placeholder: "birthday",
       label: "Birthday",
     },
@@ -81,7 +82,7 @@ const Signup = () => {
       label: "Phonenumber",
       pattern :"[0-9]{3}-[0-9]{2}-[0-9]{3}",
       errorMessage:
-        "Incorret phonenumber",
+        "Incorret phonenumber",                 
       required:true,
     },
     {
