@@ -4,7 +4,9 @@ import FormInput from "../../components/textbox/FormInput";
 import Navbar from "../../components/navbar/Navbar";
 import "./signup.css";
 import { useNavigate } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
 
+import { toast, ToastContainer } from 'react-toastify';
 
 let permission=false;
 
@@ -19,7 +21,17 @@ const Signin = () => {
   const navigate = useNavigate();
 
   
+  const notify = () => {
+    toast("Default Notification !");
 
+    toast.success("Success Notification !", {
+      position: toast.POSITION.TOP_CENTER
+    });
+
+    // toast.error("Error Notification !", {
+    //   position: toast.POSITION.TOP_LEFT
+    // });  
+  };
 
    
 
@@ -62,7 +74,7 @@ const Signin = () => {
   
     e.preventDefault();
     
-  
+  notify();
 
          const data = { email: values.email, password: values.password };
 
@@ -81,15 +93,13 @@ const Signin = () => {
      
             
 
-                  navigate('/profile/${email: values.email}');
+                    navigate('/profile',{state:{email: values.email}});
 }
-//             else{
+             else{
 
-// <ExampleToast>
-//         Wrong credentials
-//       </ExampleToast>
 
-//             }
+
+             }
            })
            .catch((error) => {
              console.error('Error:', error);
