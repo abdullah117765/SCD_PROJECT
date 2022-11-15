@@ -26,11 +26,6 @@ import AlertDismissible from "../../components/toast.jsx";
 import Toast2 from '../../components/toast.jsx';
 // import Feedback from '../feedback';
 
-import CToast from '@coreui/react-pro/src/components/toast/CToast'
-import { CToastBody } from '@coreui/react'
-import { CToastHeader } from '@coreui/react'
-import { CToastClose } from '@coreui/react'
-
 
 
 
@@ -49,28 +44,7 @@ const emailparam=location.state;
 
 
 
-  function toast (){
 
-<CToast autohide={false} visible={true}>
-  <CToastHeader closeButton>
-    <svg
-      className="rounded me-2"
-      width="20"
-      height="20"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid slice"
-      focusable="false"
-      role="img"
-    >
-      <rect width="100%" height="100%" fill="#007aff"></rect>
-    </svg>
-    <strong className="me-auto">CoreUI for React.js</strong>
-    <small>7 min ago</small>
-  </CToastHeader>
-  <CToastBody>Hello, world! This is a toast message.</CToastBody>
-</CToast>
-
-  }
 
 
 //name1,email1,Birthday1,Phonenumber1, password1, value1
@@ -93,7 +67,7 @@ const emailparam=location.state;
         .then((response) => response.json())
         .then((data) => {
          
-          <Toast2/>
+          
         })
         .catch((error) => {
           console.error('Error:', error);
