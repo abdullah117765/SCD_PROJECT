@@ -16,12 +16,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home/>}/> 
-        <Route path="/hotels" element={<List/>}/>     
+        {/* <Route path="/" element={<Home/>}/> 
+        <Route path="/hotels" element={<List/>}/>      */}
        <Route path="/register" element={<Signup/>}/>
        <Route path="/signin" element={<Signin/>}/>
        <Route path="/profile" element={<Profile />}    />
-       <Route path="/feed" element={<Feedbackfunc/>}/>
+       {/* <Route path="/feed" element={<Feedbackfunc/>}/> */}
       </Routes>
     </BrowserRouter>
   );

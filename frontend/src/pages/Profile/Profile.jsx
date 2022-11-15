@@ -11,9 +11,10 @@ import React, { useState, useEffect } from 'react';
 import Feedbackfunc from "..//feedback";
 import Card from 'react-bootstrap/Card';
 import logo from "./images.jpg";
-import 'react-toastify/dist/ReactToastify.css';
+
 import b3 from "./b3.jpg"
-import { toast, ToastContainer } from 'react-toastify';
+
+
 import Alert from 'react-bootstrap/Alert';
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
@@ -23,8 +24,18 @@ import me from "./me.jpeg";
 import "./profile.css"
 import Navbar from '../../components/navbar/Navbar';
 import AlertDismissible from "../../components/toast.jsx";
-import Toast2 from '../../components/toast.jsx';
 // import Feedback from '../feedback';
+
+let emailparam1;
+
+
+
+{/* <ExampleToast>
+        We now have Toasts
+        <span role="img" aria-label="tada">
+          🎉
+        </span>
+      </ExampleToast> */}
 
 
 
@@ -36,14 +47,15 @@ export default function Profile() {
 
 // console.log("eded"+ params.id);
 
+  
+  
+  const location = useLocation();
+  const emailparam=location.state;
+    const [backend, setUsers] = useState([{}]);
+    const data = { email: emailparam.email};
 
-const location = useLocation();
-const emailparam=location.state;
-  const [backend, setUsers] = useState([{}]);
-  const data = { email: emailparam.email};
 
-
-
+ 
 
 
 
@@ -67,22 +79,22 @@ const emailparam=location.state;
         .then((response) => response.json())
         .then((data) => {
          
-          
+     
         })
         .catch((error) => {
           console.error('Error:', error);
         });
 
-        // const rootElement = document.getElementById("root");
-        // ReactDOM.render(
-        //   <StrictMode>
-        // <AlertDismissible />
-        //    </StrictMode>,
-        //   rootElement
-        // );
-       
+        const rootElement = document.getElementById("root");
+        ReactDOM.render(
+          <StrictMode>
+        <AlertDismissible />
+           </StrictMode>,
+          rootElement
+        );
 
-        
+     
+
   };
 
 
