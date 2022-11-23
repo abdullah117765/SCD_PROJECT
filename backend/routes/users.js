@@ -113,8 +113,9 @@ router.post('/signin',authorizeUserspresence,function(req,res){
                     console.log(err);
                     res.send({"value": "-1"})
                 } else {
-                    res.send({"value":"1"});
                     console.log("Successfully updated the document.");
+                    res.send({"value":"1"});
+                   
                 }
              });
 

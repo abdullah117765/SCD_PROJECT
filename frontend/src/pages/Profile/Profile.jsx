@@ -7,6 +7,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect } from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+
+
 
 import Feedbackfunc from "..//feedback";
 import Card from 'react-bootstrap/Card';
@@ -23,7 +27,7 @@ import { useLocation } from 'react-router-dom';
 import me from "./me.jpeg";
 import "./profile.css"
 import Navbar from '../../components/navbar/Navbar';
-import AlertDismissible from "../../components/toast.jsx";
+
 // import Feedback from '../feedback';
 
 let emailparam1;
@@ -78,6 +82,20 @@ export default function Profile() {
       })
         .then((response) => response.json())
         .then((data) => {
+console.log("obame",data);
+
+          if(data.value === '1'){
+
+            toast.success("Success Notification !", {
+              position: toast.POSITION.TOP_RIGHT
+            });
+}
+           else{
+            toast.error("Error Notification !", {
+              position: toast.POSITION.TOP_RIGHT
+            });
+           }
+
          
      
         })
@@ -85,13 +103,7 @@ export default function Profile() {
           console.error('Error:', error);
         });
 
-        const rootElement = document.getElementById("root");
-        ReactDOM.render(
-          <StrictMode>
-        <AlertDismissible />
-           </StrictMode>,
-          rootElement
-        );
+      
 
      
 
@@ -167,6 +179,7 @@ export default function Profile() {
   return (
     <div  >
     <Navbar/>
+    <ToastContainer/>
     {/* <Header/> */}
     
 

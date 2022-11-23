@@ -4,7 +4,7 @@ import FormInput from "../../components/textbox/FormInput";
 import Navbar from "../../components/navbar/Navbar";
 import "./signup.css";
 import { useNavigate } from "react-router-dom";
-import 'react-toastify/dist/ReactToastify.css';
+ import 'react-toastify/dist/ReactToastify.css';
 
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -22,15 +22,9 @@ const Signin = () => {
 
   
   const notify = () => {
-    toast("Default Notification !");
+   
 
-    toast.success("Success Notification !", {
-      position: toast.POSITION.TOP_CENTER
-    });
-
-    // toast.error("Error Notification !", {
-    //   position: toast.POSITION.TOP_LEFT
-    // });  
+     
   };
 
    
@@ -91,15 +85,18 @@ const Signin = () => {
              console.log('Success:', data);
             if(data.value === '1'){
      
-            
-
+              // toast.success("Success Notification !", {
+              //   position: toast.POSITION.TOP_RIGHT
+              // });
                     navigate('/profile',{state:{email: values.email}});
 }
              else{
-
-
-
+              toast.error("Error Notification !", {
+                position: toast.POSITION.TOP_RIGHT
+              });
              }
+
+
            })
            .catch((error) => {
              console.error('Error:', error);
@@ -120,6 +117,7 @@ const Signin = () => {
   return (
     <div>
     <Navbar/>
+    <ToastContainer/>
     <div className="signup">
       <form className="form2" onSubmit={handleSubmit}>
         <h1 className="h1alpha">Sign In</h1>
@@ -132,6 +130,7 @@ const Signin = () => {
           />
         ))}
         <button className="buttonsign"  >Submit</button>
+       
       </form>
     </div>
     </div>
