@@ -4,12 +4,15 @@ import express from 'express';
 // const express = require('express');
 const router = express.Router();
 
+
+
+
+
 // const mongoose = require('mongoose');
 import mongoose from 'mongoose';
 
- mongoose.connect("mongodb://localhost:27017/Users", {useNewUrlParser :true});
-    
-    
+  mongoose.connect("mongodb+srv://Abdullah117765:1234@cluster0.luzvyhx.mongodb.net/Users", {useNewUrlParser :true});
+
     
     const UserSchema = new  mongoose.Schema({
         Name: String,

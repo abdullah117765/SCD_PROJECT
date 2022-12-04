@@ -72,7 +72,7 @@ export default function Profile() {
 
     const data = { name: getname,email: getemail, Birthday: getdate,Phonenumber:getnum, password: getpass};
   
-      fetch('/users/updateuser', {
+      fetch('http://4.240.0.255:5000/users/updateuser', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ console.log("obame",data);
 
   const  getUser=()=>{
     
-    fetch('/users/profile', {
+    fetch('http://4.240.0.255:5000/users/profile', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',

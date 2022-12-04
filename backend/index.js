@@ -16,6 +16,11 @@ import router from './routes/users.js';
 const app = express()
 const port = 5000
 
+import cors from 'cors';
+
+app.use(cors());
+app.use(express.json());
+
 app.use(bodyParser.json())
 // Adding a Router
 app.use('/users', router);

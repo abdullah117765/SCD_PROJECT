@@ -72,7 +72,7 @@ const Signin = () => {
 
          const data = { email: values.email, password: values.password };
 
-         fetch('/users/signin', {
+         fetch('http://4.240.0.255:5000/users/signin', {
            method: 'POST', // or 'PUT'
            headers: {
              'Content-Type': 'application/json',

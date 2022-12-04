@@ -3,6 +3,9 @@ import React from 'react';
 import FormInput from "../../components/textbox/FormInput";
 import Navbar from "../../components/navbar/Navbar";
 import "./signup.css";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+
 import { useNavigate } from "react-router-dom";
 let permission=false;
 
@@ -11,7 +14,7 @@ function Signuprequest(name1,email1,Birthday1,Phonenumber1, password1) {
  
   const data = { name: name1,email: email1, birthday: Birthday1,Phonenumber:Phonenumber1, password: password1 };
 
-  fetch('/users/signup', {
+  fetch('http://4.240.0.255:5000/users/signup', {
     method: 'POST', // or 'PUT'
     headers: {
       'Content-Type': 'application/json',
@@ -24,6 +27,12 @@ function Signuprequest(name1,email1,Birthday1,Phonenumber1, password1) {
       console.log('Success:', data);
      if(data.value =='1')
      permission=true;
+     toast.success("Success Notification !", {
+                position: toast.POSITION.TOP_RIGHT
+              });
+
+              
+
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -125,6 +134,7 @@ const Signup = () => {
   return (
     <div>
     <Navbar/>
+    <ToastContainer/>
     <div className="signup">
       <form className="form1" onSubmit={handleSubmit}>
         <h1 className="h1alpha">Register</h1>
